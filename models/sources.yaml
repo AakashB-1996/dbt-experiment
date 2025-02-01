@@ -1,0 +1,27 @@
+version: 2
+sources:
+  - name: my_src
+    schema: wrk_training
+    tables:
+      - name: src_population
+        identifier: world_population
+        loaded_at_field: edh_rec_cre_ts
+        freshness: 
+          error_after:
+            count: 365
+            period: day
+          warn_after:
+            count: 365
+            period: day         
+      - name: tgt_population
+        identifier: dim_mart_world_population
+      - name: tgt_population_typ1
+        identifier: dim_mart_world_population_typ1
+      - name: cntry_lkp
+        identifier: wrk_mart_country_code_lookup
+      - name: tgt_population_test
+        identifier: dim_mart_world_population_test
+      - name: tgt_fact_population
+        identifier: fact_mart_world_population  
+      - name: src_prfl_churn
+        identifier: churn_modelling                
